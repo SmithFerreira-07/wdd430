@@ -26,15 +26,39 @@ function App() {
   }
 
 
-  return (
+return (
     <div className="App">
+      <h1>To-Do List</h1>
       <form className="form" onSubmit={addTask}>
         <label htmlFor="task">Task:</label>
-        <input type="text" id="task" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+        <input 
+          type="text" 
+          id="task" 
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="What needs to be done?"
+        />
         <button type="submit">Add Task</button>
       </form>
+
+      <ul className="task-list">
+        {tasks.map((task) => (
+          <li key={task.id} className="task-item">
+            <span>{task.text}</span>
+            <button 
+              onClick={() => deleteTask(task.id)}
+              className="delete-btn"
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    <footer>
+      <p>Created by Eric Rafael Calado Ferreira &copy; 2026</p>
+    </footer>
     </div>
-  )
+  );
 }
 
 export default App
