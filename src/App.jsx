@@ -21,13 +21,16 @@ function App() {
     setInputValue('');
   };
 
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(task => task.id !== id));
+  }
 
 
   return (
     <div className="App">
-      <form className="form">
+      <form className="form" onSubmit={addTask}>
         <label htmlFor="task">Task:</label>
-        <input type="text" id="task" />
+        <input type="text" id="task" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
         <button type="submit">Add Task</button>
       </form>
     </div>
