@@ -1,7 +1,28 @@
-
+import {useState} from 'react'
 import './App.css'
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+
+  const [inputValue, setInputValue] = useState('');
+
+  const addTask = (e) => {
+    e.preventDefault();
+
+    if (inputValue.trim() == '') return;
+
+    const newTask = {
+      id: Date.now(),
+      text: inputValue,
+    };
+
+    setTasks([...tasks, newTask]);
+
+    setInputValue('');
+  };
+
+
+
   return (
     <div className="App">
       <form className="form">
